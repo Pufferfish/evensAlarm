@@ -1,0 +1,39 @@
+<!doctype html>
+<head>
+	<title>Even sine alarmer</title>
+	<link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}" type="text/css">
+</head>
+
+<nav>
+{% if not session.loggedIn  %}
+	<a class="button" href='{{ url_for("login")  }}'>Log in</a>
+{% else %}
+	<a class="button" href='{{ url_for("logout")  }}'>Log out</a>
+{% endif %}
+</nav>
+
+<body>
+<div>
+
+<ul class="alarmList">
+{% if session.loggedIn %}
+  <li class="alarm">
+    <form action="{{ url_for('addAlarm') }}" method="post" class="alarmForm">
+      <dl class="alarmFields">
+        <dd>Description: <br> <input type="text" size="30" name="description">
+        <dd>Time: 	 <br> <input type="time" size="30" name="time">
+        <dd>Day: 	 <br> <input type="number" size="30" name="day">
+        <dd><input type="submit" value="Add alarm">
+      </dl>
+    </form>
+  </li>
+{% endif %}
+	
+{% for alarm in alarms %}
+	<li class="alarm"><b>{{ alarm.description }}</b> <br> {{ alarm.hour }}:{{ alarm.minute }} på {{ alarm.getDay()  }} </li>
+{% else %}
+	<li><em>Unbelievable.  No entries here so far</em> </li>
+{% endfor %}
+	</ul>
+</div>
+</body>

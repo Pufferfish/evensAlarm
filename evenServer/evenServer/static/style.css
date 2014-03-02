@@ -1,0 +1,35 @@
+body {
+	background: #222;
+	font-family: sans-serif;
+}
+
+.alarmForm {
+	color: #EEE;
+}
+
+.alarmFields > dd {
+	margin: 10px auto;
+}
+
+.alarmList {
+	list-style: none;
+	display: inline;
+	text-align: center;
+}
+
+.alarm {
+	color: #EEE;
+	padding: 5px;
+}
+
+.alarm > b {
+	font-size: 20;
+}
+
+.button {
+	background: #EEE;
+	color: #222;
+	padding: 10px;
+	text-decoration: none;
+	float: right;
+}
